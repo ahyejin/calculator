@@ -20,6 +20,7 @@ allButtons.addEventListener("click", function (event) {
         }
     }
     
+    
 })
 
 const add = function (a, b) {
