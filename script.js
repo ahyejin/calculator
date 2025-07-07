@@ -8,7 +8,10 @@ allButtons.addEventListener("click", function (event) {
         input.textContent = "";
         result.textContent = "";
     }
-
+    if(entry === "bs"){
+        input.textContent = input.textContent.substring(0, input.textContent.length - 1);
+        result.textContent = "";
+    }
     if (Number.isInteger(+entry)) {
         input.textContent += entry;
         operatorFlag = true;
