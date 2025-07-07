@@ -15,10 +15,18 @@ body{
 }
 
 .inputExpression{
+    display: flex;
     height: 80px;
+    font-size: 40px;
+    justify-content: flex-end;
+    margin:0px 10px;
 }
 .result{
+    display: flex;
     height: 70px;
+    font-size: 30px;
+    justify-content: flex-end;
+    margin: 0px 10px;
 }
 button{
     width:100px;
