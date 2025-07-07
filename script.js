@@ -19,10 +19,35 @@ allButtons.addEventListener("click", function (event) {
             operatorFlag = false
         }
     }
-    
-    
-})
+    const expression = input.textContent;
+    const array = expression.match(/^(\d+)([-+*/%^])(\d+)$/);
+    if (array) {
+        console.log(array);
+        operate(array);
+    }
+    if (entry === "=") {
+        input.textContent = result.textContent;
+        result.textContent = "";
 
+    }
+
+})
+function operate(input) {
+    switch (input[2]) {
+        case "+": add(input[1], input[3]);
+            break;
+        case "-": subtract(input[1], input[3]);
+            break;
+        case "*": multiply(input[1], input[3]);
+            break;
+        case "/": divison(input[1], input[3]);
+            break;
+        case "%": percentage(input[1], input[3]);
+            break;
+        case "^": power(input[1], input[3]);
+            break;
+    }
+}
 const add = function (a, b) {
     a = (+a);
     b = (+b);
