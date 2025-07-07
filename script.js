@@ -2,13 +2,14 @@ const input = document.querySelector(".inputExpression");
 const result = document.querySelector(".result");
 const allButtons = document.querySelector(".allButtons");
 let operatorFlag = false;
+let lastPressed = "";
 allButtons.addEventListener("click", function (event) {
     let entry = event.target.textContent;
     if (entry === "ac") {
         input.textContent = "";
         result.textContent = "";
     }
-    if(entry === "bs"){
+    if (entry === "bs") {
         input.textContent = input.textContent.substring(0, input.textContent.length - 1);
         result.textContent = "";
     }
@@ -19,7 +20,7 @@ allButtons.addEventListener("click", function (event) {
     if (operatorFlag) {
         if (["+", "-", "*", "/", "%", "^"].includes(entry)) {
             input.textContent += entry;
-            operatorFlag = false
+            operatorFlag = false;
         }
     }
     const expression = input.textContent;
@@ -27,11 +28,14 @@ allButtons.addEventListener("click", function (event) {
     if (array) {
         console.log(array);
         operate(array);
+        operatorFlag = false;
     }
     if (entry === "=") {
-        input.textContent = result.textContent;
-        result.textContent = "";
-
+        if (result.textContent !== "") {
+            input.textContent = result.textContent;
+            result.textContent = "";
+            operatorFlag = true;
+        }
     }
 
 })
