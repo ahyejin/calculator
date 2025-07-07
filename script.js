@@ -1,6 +1,26 @@
 const input = document.querySelector(".inputExpression");
 const result = document.querySelector(".result");
 const allButtons = document.querySelector(".allButtons");
+let operatorFlag = false;
+allButtons.addEventListener("click", function (event) {
+    let entry = event.target.textContent;
+    if (entry === "ac") {
+        input.textContent = "";
+        result.textContent = "";
+    }
+
+    if (Number.isInteger(+entry)) {
+        input.textContent += entry;
+        operatorFlag = true;
+    }
+    if (operatorFlag) {
+        if (["+", "-", "*", "/", "%", "^"].includes(entry)) {
+            input.textContent += entry;
+            operatorFlag = false
+        }
+    }
+    
+})
 
 const add = function (a, b) {
     a = (+a);
