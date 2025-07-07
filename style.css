@@ -1,0 +1,33 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.main-section{
+    width:420px;
+    height:550px;
+    border:1px solid black;
+}
+
+.inputExpression{
+    height: 80px;
+}
+.result{
+    height: 70px;
+}
+button{
+    width:100px;
+    height:80px;
+    font-size: 30px;
+}
+.allButtons{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
