@@ -9,15 +9,20 @@ allButtons.addEventListener("click", function (event) {
     if (entry === "ac") {
         input.textContent = "";
         result.textContent = "";
-        return;
+        operatorFlag = false;
+        
     }
     if (entry === "bs") {
         input.textContent = input.textContent.substring(0, input.textContent.length - 1);
         result.textContent = "";
-        if (input.textContent.match(/^(\d+)$/)[0]) {
-            operatorFlag = true;
+        console.log(input.textContent);
+        const matchExpression = input.textContent.match(/^(\d+)$/);
+        console.log(matchExpression);
+        if (matchExpression) {
+             operatorFlag = true;
         }
-        return;
+        console.log(input.textContent);
+    
     }
     if (Number.isInteger(+entry)) {
         input.textContent += entry;
@@ -32,7 +37,7 @@ allButtons.addEventListener("click", function (event) {
     const expression = input.textContent;
     const array = expression.match(/^(\d+)([-+*/%^])(\d+)$/);
     if (array) {
-        console.log(array);
+       // console.log(array);
         operate(array);
         operatorFlag = false;
     }
@@ -64,8 +69,8 @@ function operate(input) {
 const add = function (a, b) {
     a = (+a);
     b = (+b);
-    console.log(a);
-    console.log(b);
+    //console.log(a);
+    //console.log(b);
     let ans = a + b;
     result.textContent = ans;
 }
