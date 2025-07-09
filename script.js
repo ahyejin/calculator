@@ -5,13 +5,19 @@ let operatorFlag = false;
 let lastPressed = "";
 allButtons.addEventListener("click", function (event) {
     let entry = event.target.textContent;
+
     if (entry === "ac") {
         input.textContent = "";
         result.textContent = "";
+        return;
     }
     if (entry === "bs") {
         input.textContent = input.textContent.substring(0, input.textContent.length - 1);
         result.textContent = "";
+        if (input.textContent.match(/^(\d+)$/)[0]) {
+            operatorFlag = true;
+        }
+        return;
     }
     if (Number.isInteger(+entry)) {
         input.textContent += entry;
