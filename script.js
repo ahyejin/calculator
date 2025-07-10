@@ -9,6 +9,7 @@ allButtons.addEventListener("click", function (event) {
         input.textContent = "";
         result.textContent = "";
         operatorFlag = false;
+        decimalFlag = false;
         return;
     }
     if (entry === "bs") {
@@ -16,7 +17,7 @@ allButtons.addEventListener("click", function (event) {
         result.textContent = "";
         result.style.color = "black";
         console.log(input.textContent);
-        
+
         const matchExpression = input.textContent.match(/^(\d+)$/);
         console.log(matchExpression);
         if (matchExpression) {
