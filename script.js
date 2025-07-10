@@ -22,6 +22,7 @@ allButtons.addEventListener("click", function (event) {
         console.log(matchExpression);
         if (matchExpression) {
             operatorFlag = true;
+            decimalFlag = true;
         }
         console.log(input.textContent);
 
