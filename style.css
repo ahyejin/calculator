@@ -1,41 +1,87 @@
-*{
+* {
     box-sizing: border-box;
 }
-body{
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-.main-section{
-    width:420px;
-    height:555px;
-    border:1px solid black;
+
+h1 {
+    margin: 10px;
 }
 
-.inputExpression{
+body {
+    height: 100vh;
     display: flex;
-    height: 80px;
-    font-size: 40px;
-    justify-content: flex-end;
-    margin:0px 10px;
+    flex-direction: column;    
+
+    align-items: center;
+    justify-content: center;
+    background-color: #ced4da;
 }
-.result{
+
+.main-section {
+    width: 450px;
+    height: 560px;
+    border: 8px solid #457b9d;
+
+    
+    border-radius: 12px;
+    padding: 0px;
+}
+
+.inputExpression {
     display: flex;
     height: 70px;
-    font-size: 30px;
+    font-size: 45px;
     justify-content: flex-end;
-    margin: 0px 10px;
+    margin: 0px 20px;
 }
-button{
-    width:100px;
-    height:80px;
+
+.result {
+    display: flex;
+    height: 60px;
+    font-size: 35px;
+    justify-content: flex-end;
+    margin: 0px 20px;
+
+}
+
+button {
+    width: 100px;
+    height: 80px;
     font-size: 30px;
+    border-radius: 50px;
+    border: 1px solid skyblue;
+    transition: transform 0.2s ease;
 }
-.allButtons{
+
+button:active {
+    transform: scale(1.1);
+}
+
+
+.allButtons {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 3px;
+}
+
+.digits {
+    background-color: rgb(240, 219, 219);
+}
+
+.operator {
+    background-color: #62b6cb;
+}
+
+.clear {
+    background-color: #dd2d4a;
+}
+
+@media (max-width: 480px) {
+    body {
+        height: 555px;
+        width: 418px;
+        margin-top: 15px;
+    }
+
 }
