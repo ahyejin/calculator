@@ -2,55 +2,70 @@ const input = document.querySelector(".inputExpression");
 const result = document.querySelector(".result");
 const allButtons = document.querySelector(".allButtons");
 let operatorFlag = false;
-let lastPressed = "";
+let decimalFlag = false;
 allButtons.addEventListener("click", function (event) {
-    
     let entry = event.target.textContent;
-
     if (entry === "ac") {
         input.textContent = "";
         result.textContent = "";
         operatorFlag = false;
         return;
-        
     }
     if (entry === "bs") {
         input.textContent = input.textContent.substring(0, input.textContent.length - 1);
         result.textContent = "";
         result.style.color = "black";
-
         console.log(input.textContent);
+        
         const matchExpression = input.textContent.match(/^(\d+)$/);
         console.log(matchExpression);
         if (matchExpression) {
-             operatorFlag = true;
+            operatorFlag = true;
         }
         console.log(input.textContent);
-    
+
+    } if (decimalFlag) {
+        if (entry === ".") {
+            input.textContent += entry;
+            decimalFlag = false;
+        }
     }
     if (Number.isInteger(+entry)) {
         input.textContent += entry;
         result.style.color = "black";
         operatorFlag = true;
+        decimalFlag = true;
     }
     if (operatorFlag) {
         if (["+", "-", "*", "/", "%", "^"].includes(entry)) {
             input.textContent += entry;
             operatorFlag = false;
+            decimalFlag = false;
         }
     }
     const expression = input.textContent;
-    const array = expression.match(/^(\d+)([-+*/%^])(\d+)$/);
+    const array = expression.match(/^(-?\d+(?:\.\d+)?)([-+*/%^])(\d+(?:\.\d+)?)$/);
     if (array) {
-        console.log(array);
         operate(array);
         operatorFlag = false;
     }
     if (entry === "=") {
-        if (result.textContent !== "") {
-            input.textContent = result.textContent;
+
+        if (result.textContent === "Can't divide by 0") {
             result.textContent = "";
-            operatorFlag = true;
+            input.textContent = "";
+        }
+        if (result.textContent !== "") {
+            if (!(+(result.textContent).isInteger)) {
+                input.textContent = Math.round(+(result.textContent) * 1000) / 1000;
+                result.textContent = "";
+                operatorFlag = true;
+            }
+            else {
+                input.textContent = result.textContent;
+                result.textContent = "";
+                operatorFlag = true;
+            }
         }
     }
 
@@ -92,7 +107,7 @@ const multiply = function (a, b) {
 const divison = function (a, b) {
     a = (+a);
     b = (+b);
-    if(b == 0){
+    if (b == 0) {
         result.textContent = "Can't divide by 0";
         result.style.color = "red";
         return;
@@ -109,7 +124,7 @@ const power = function (a, b) {
 const percentage = function (a, b) {
     a = (+a);
     b = (+b);
-    if(b == 0){
+    if (b == 0) {
         result.textContent = "Can't divide by 0";
         result.style.color = "red";
         return;
