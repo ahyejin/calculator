@@ -24,9 +24,21 @@ allButtons.addEventListener("click", function (event) {
             operatorFlag = true;
             decimalFlag = true;
         }
+
         console.log(input.textContent);
 
-    } if (decimalFlag) {
+    }
+    const matchDecimalExpression = input.textContent.match(/^(-?\d+(?:\.\d+)?)([-+*/%^])(\d+(?:\.\d+))$/);
+    if (matchDecimalExpression) {
+        decimalFlag = false;
+    }
+    const matchDecimal = input.textContent.match(/^(\d+(?:\.\d+))$/);
+    if (matchDecimal) {
+        decimalFlag = false;
+    }
+
+
+    if (decimalFlag) {
         if (entry === ".") {
             input.textContent += entry;
             decimalFlag = false;
